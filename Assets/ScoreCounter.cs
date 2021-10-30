@@ -9,8 +9,17 @@ public class ScoreCounter : MonoBehaviour
     {
         if (other.tag == "Cow")
         {
-            Score++;
-            print(Score);
+            LevelManager.score++;
+        }
+
+        if (other.tag == "GoldCow")
+        {
+            LevelManager.score++;
+        }
+
+        if (other.tag == "Human")
+        {
+            LevelManager.score--;
         }
     }
 }
