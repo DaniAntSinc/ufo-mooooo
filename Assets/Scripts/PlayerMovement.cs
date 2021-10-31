@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float horizontalSpeed = 5;
 
     public GameObject beam;
+    public GameObject beamAnimation;
 
     private void Start()
     {
@@ -97,13 +98,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             beam.GetComponent<CapsuleCollider>().enabled = true;
-            beam.GetComponent<MeshRenderer>().enabled = true;
+            beamAnimation.SetActive(true);
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             beam.GetComponent<CapsuleCollider>().enabled = false;
-            beam.GetComponent<MeshRenderer>().enabled = false;
+            beamAnimation.SetActive(false);
         }
         #endregion
     }

@@ -78,7 +78,7 @@ public class LevelManager : MonoBehaviour
         if (score >= scoreStar3)
         {
             yield return new WaitForSeconds(1);
-            star2.SetActive(true);
+            star3.SetActive(true);
         }
         yield return new WaitForSeconds(1);
         Continue.SetActive(true);
