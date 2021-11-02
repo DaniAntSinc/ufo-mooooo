@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UFOFloat : MonoBehaviour
 {
-    float amplitudeY = 0.5f;
-    float omegaY = 1;
+    public float amplitudeY = 0.5f;
+    public float omegaY = 1;
     float index;
     public void Update()
     {
