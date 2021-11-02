@@ -9,9 +9,9 @@ public class LevelManager : MonoBehaviour
     public float minutes = 1, seconds = 30;
     public Text TimeRemaining;
     bool stopCountDown;
-    public static int score, goldScore, humanScore;
+    public static int score, goldScore, humanScore, total;
 
-    public Text cowsCollected, goldCollected, humanCollected, totalCollected;
+    public Text cowsCollected, goldCollectedRaw, goldCollected, humanCollectedRaw, humanCollected, totalCollected;
     public int scoreStar1, scoreStar2, scoreStar3;
     public GameObject levelFinished, star1, star2, star3;
     public GameObject Continue;
@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
         score = 0;
         goldScore = 0;
         humanScore = 0;
+        total = 0;
     }
 
     void Update()
@@ -61,21 +62,26 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         cowsCollected.text = score.ToString();
-        goldCollected.text = goldScore.ToString();
-        humanCollected.text = humanScore.ToString();
 
-        totalCollected.text = (score + goldScore + humanScore).ToString(); 
-        if (score >= scoreStar1)
+        goldCollectedRaw.text = goldScore.ToString();
+        humanCollectedRaw.text = humanScore.ToString();
+
+        goldCollected.text = (5 * goldScore).ToString();
+        humanCollected.text = (-5 * humanScore).ToString();
+
+        total = (score + (goldScore * 5) + (humanScore * -5));
+        totalCollected.text = total.ToString(); 
+        if (total >= scoreStar1)
         {
             yield return new WaitForSeconds(1);
             star1.SetActive(true);
         }
-        if (score >= scoreStar2)
+        if (total >= scoreStar2)
         {
             yield return new WaitForSeconds(1);
             star2.SetActive(true);
         }
-        if (score >= scoreStar3)
+        if (total >= scoreStar3)
         {
             yield return new WaitForSeconds(1);
             star3.SetActive(true);
